@@ -82,6 +82,6 @@ All models, music, and effects included are either created by me or under a lice
 
 
 ## 📌 Author Note
-
+Built and maintained by Itipat Songsampansakul as part of a portfolio project.
 This is a solo project built with ~1 year of Unity experience, emphasizing hands-on learning, scalable systems, and code organization. It's a work-in-progress but already demonstrates strong foundations in gameplay logic, UI flow, and clean software design.
 
