@@ -21,7 +21,7 @@ The game features:
 ###  Scripts (Core Game Logic)
 
 Located in the `Scripts/` folder, the project follows a **modular, component-based approach** where each mechanic (movement, gravity, stats, attack) is implemented as its own self-contained module. This makes it easy to:
-
+[View Scripts Folder](./Scripts)
 - **Extend functionality** (e.g., add new mechanics without editing existing scripts).
 - **Maintain and debug** (e.g., each module has a clear responsibility).
 - **Reuse across characters or games** with minimal coupling.
@@ -36,7 +36,7 @@ Notable principles:
 ---
 
 ###  UI System
-
+[View UI Folder](./UIElements)
 Located in the `UIElements/` folder, the project includes responsive UI components for:
 - Main menu navigation
 - Pause and resume logic
@@ -52,6 +52,7 @@ Highlights:
 
 ---
 ### Visual Effects & Shader Work
+[View VFX Folder](./VFX)
 - This project also includes custom shader effects to enhance player feedback and UI-less design:
 
 - Energy levels and combat status are visualized through in-world shader effects (e.g., glow, saturation, or outline changes).
