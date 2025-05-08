@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20cee06265470184ab6287feecbc9738, type: 3}
+  m_Name: Jab1
+  m_EditorClassIdentifier: 
+  attackName: Jab1
+  category: 0
+  stamina: 10
+  specialInput: 
+  specialComboMaxGap: 0
+  AirAttack: 0
+  inputName: 0
+  framesPerSecond: 30
+  startupFrames: 8
+  activeFrames: 2
+  recoveryFrames: 12
+  baseDamage: 10
+  knockbackMagnitude: 1
+  knockbackVerticalFactor: 0
+  hitStop: 2
+  cancelableDuringStartup: 1
+  cancelableDuringActive: 0
+  cancelableDuringRecovery: 1
+  hitboxSize: {x: 2.5, y: 3, z: 2.5}
+  animationTrigger: Light1Combo1
+  attackSFX: {fileID: 0}
+  prefab: {fileID: 0}
+  SpawnPoint: VFXSpawnPoint

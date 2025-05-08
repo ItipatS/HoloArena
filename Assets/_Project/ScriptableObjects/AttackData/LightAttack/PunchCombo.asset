@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64be8f2c6e27e054e85c52dfb0cf8b4a, type: 3}
+  m_Name: PunchCombo
+  m_EditorClassIdentifier: 
+  comboMoves:
+  - {fileID: 11400000, guid: 13aef66b5c16c654aa56863f833e4733, type: 2}
+  - {fileID: 11400000, guid: 7352dcb5401deb54d87bf98f45660a9c, type: 2}
+  - {fileID: 11400000, guid: fde8b26d7212b894383e286a8b180b4d, type: 2}
+  comboWindow: 1

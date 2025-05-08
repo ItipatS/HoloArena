@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd499d76a9cf374480232cd980315a6, type: 3}
+  m_Name: FubukiData
+  m_EditorClassIdentifier: 
+  characterPreview: {fileID: 8817696088956195818, guid: f24848643de80be4097b5a34ff227b8e, type: 3}
+  characterPrefab: {fileID: 2051937045611849596, guid: 913bfd9f0e7fa284eb5c26e27606e832, type: 3}
+  characterIcon: {fileID: 21300000, guid: f67fa72360d27974ea6579554a894ade, type: 3}
+  isUnlocked: 1
+  characterName: Fubuki
+  maxHealth: 200
+  maxStamina: 100
+  baseAtk: 10
+  jumpHoldForce: 8
+  jumpHoldDuration: 0.15
+  dashSpeed: 10
+  dashDuration: 0.2
+  moveSpeed: 10
+  acceleration: 15
+  deceleration: 30
