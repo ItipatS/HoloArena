@@ -51,8 +51,19 @@ Highlights:
 >  Designed to be intuitive, readable, and extendable, especially for team handoff or designer collaboration.
 
 ---
+### Visual Effects & Shader Work
+- This project also includes custom shader effects to enhance player feedback and UI-less design:
 
-## 🔄 Reusability & Maintainability
+- Energy levels and combat status are visualized through in-world shader effects (e.g., glow, saturation, or outline changes).
+
+- Shader-driven feedback replaces traditional UI bars, creating a cleaner and more immersive game experience.
+
+- Effects are tied to gameplay states (e.g., energy low = pulsing glow), and support stacking indicators for more complex mechanics.
+
+> Built with Unity's Built-in Render Pipeline and custom shader scripts (without relying on URP/HDRP), designed to run efficiently on low-spec devices.
+
+---
+##  Reusability & Maintainability
 
 This project is designed to be:
 - **Scalable:** Add new mechanics or characters without rewriting existing systems.
