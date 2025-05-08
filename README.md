@@ -51,7 +51,8 @@ Highlights:
 - [View UI Folder](./Assets/_Project/UIElements)
 >  Designed to be intuitive, readable, and extendable, especially for team handoff or designer collaboration.
 
->[![Watch the demo](https://img.youtube.com/vi/6s0k-Z0F8c8/hqdefault.jpg)](https://www.youtube.com/watch?v=6s0k-Z0F8c8)
+> [![Watch the demo]
+(https://img.youtube.com/vi/6s0k-Z0F8c8/hqdefault.jpg)](https://www.youtube.com/watch?v=6s0k-Z0F8c8)
 ---
 ### Visual Effects & Shader Work
 
@@ -66,7 +67,8 @@ Highlights:
 - [View VFX Folder](./Assets/_Project/VFX)
 > Built with Unity's Built-in Render Pipeline and custom shader scripts (without relying on URP/HDRP), designed to run efficiently on low-spec devices.
 
-> [![Watch the demo](https://img.youtube.com/vi/NoEU0BiMYJQ/hqdefault.jpg)](https://www.youtube.com/watch?v=NoEU0BiMYJQ)
+> [![Watch the demo]
+(https://img.youtube.com/vi/NoEU0BiMYJQ/hqdefault.jpg)](https://www.youtube.com/watch?v=NoEU0BiMYJQ)
 ---
 ##  Reusability & Maintainability
 
