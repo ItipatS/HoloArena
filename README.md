@@ -48,7 +48,7 @@ Highlights:
 - **Animator-driven buttons** enhance user feedback using `ButtonAnimatorUtility`.
 - UI managers are **scene-aware** and follow naming conventions, making them easy to identify and swap.
   
-- [View UI Folder](../Assets/_Project/UIElements)
+- [View UI Folder](./Assets/_Project/UIElements)
 >  Designed to be intuitive, readable, and extendable, especially for team handoff or designer collaboration.
 ---
 ### Visual Effects & Shader Work
