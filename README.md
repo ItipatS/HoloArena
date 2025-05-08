@@ -19,9 +19,7 @@ The game features:
 ## Project Structure & Highlights
 
 ###  Scripts (Core Game Logic)
-
 Located in the `Scripts/` folder, the project follows a **modular, component-based approach** where each mechanic (movement, gravity, stats, attack) is implemented as its own self-contained module. This makes it easy to:
-[View Scripts Folder](./Scripts)
 - **Extend functionality** (e.g., add new mechanics without editing existing scripts).
 - **Maintain and debug** (e.g., each module has a clear responsibility).
 - **Reuse across characters or games** with minimal coupling.
@@ -31,12 +29,14 @@ Notable principles:
 - **Loose coupling:** Each module communicates via interfaces and is managed through a central controller.
 - **Scalable logic:** New modules can be plugged into the core loop without modifying the base character structure.
 
+- [View Scripts Folder](./Assets/_Project/Scripts)
 >  Example: `GroundCheckModule`, `GravityComponent`, and `CharacterStat` are fully reusable and can be assigned per-character via the Inspector.
 
 ---
 
 ###  UI System
-[View UI Folder](./UIElements)
+
+
 Located in the `UIElements/` folder, the project includes responsive UI components for:
 - Main menu navigation
 - Pause and resume logic
@@ -47,12 +47,12 @@ Highlights:
 - **UI scripts are fully decoupled from logic**, making them easy to replace or animate.
 - **Animator-driven buttons** enhance user feedback using `ButtonAnimatorUtility`.
 - UI managers are **scene-aware** and follow naming conventions, making them easy to identify and swap.
-
+  
+- [View UI Folder](../Assets/_Project/UIElements)
 >  Designed to be intuitive, readable, and extendable, especially for team handoff or designer collaboration.
-
 ---
 ### Visual Effects & Shader Work
-[View VFX Folder](./VFX)
+
 - This project also includes custom shader effects to enhance player feedback and UI-less design:
 
 - Energy levels and combat status are visualized through in-world shader effects (e.g., glow, saturation, or outline changes).
@@ -60,7 +60,8 @@ Highlights:
 - Shader-driven feedback replaces traditional UI bars, creating a cleaner and more immersive game experience.
 
 - Effects are tied to gameplay states (e.g., energy low = pulsing glow), and support stacking indicators for more complex mechanics.
-
+  
+- [View VFX Folder](./Assets/_Project/VFX)
 > Built with Unity's Built-in Render Pipeline and custom shader scripts (without relying on URP/HDRP), designed to run efficiently on low-spec devices.
 
 ---
