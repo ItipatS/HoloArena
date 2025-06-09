@@ -83,7 +83,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _Distort: 0.2
     - _DstBlend: 0
-    - _FillAmount: 0.8
+    - _FillAmount: 0
     - _Freq: 10
     - _GlossMapScale: 1
     - _Glossiness: 0.5

@@ -13,13 +13,15 @@ public class InputBufferModule
     }
 
     private List<BufferedInput> buffer = new List<BufferedInput>();
+    float bufferTimeInSeconds;
     private float bufferFrames;
     private int currentFrame;
     private const int maxBufferSize = 20; // Prevent buffer overflow
 
-    public InputBufferModule(float bufferTime, int targetFPS = 60)
+    public InputBufferModule(float bufferTimeInSeconds, int targetFPS = 60)
     {
-        this.bufferFrames = Mathf.RoundToInt(bufferTime * targetFPS);
+        this.bufferTimeInSeconds = bufferTimeInSeconds;
+        this.bufferFrames = Mathf.RoundToInt(bufferTimeInSeconds * targetFPS);
         this.currentFrame = 0;
     }
 
@@ -33,7 +35,7 @@ public class InputBufferModule
             {
                 action = action,
                 frameStamp = currentFrame,
-                realTimeStamp = Time.realtimeSinceStartup
+                realTimeStamp = Time.fixedTime
             });
             if (buffer.Count > maxBufferSize)
             {
@@ -49,7 +51,6 @@ public class InputBufferModule
         if (index >= 0)
         {
             buffer.RemoveAt(index);
-            //PrintBuffer();
             return true;
         }
         return false;
@@ -62,23 +63,21 @@ public class InputBufferModule
         {
             return false;
         }
-        PrintBuffer();
 
         int seqIndex = sequence.Length - 1;
         int bufferIndex = buffer.Count - 1;
-        float lastTime = currentFrame;
+        float lastTime = Time.fixedTime;
 
         List<int> matchedIndices = new List<int>();
 
         while (bufferIndex >= 0 && seqIndex >= 0)
         {
             if (buffer[bufferIndex].action.Equals(sequence[seqIndex], StringComparison.OrdinalIgnoreCase) &&
-                (lastTime - buffer[bufferIndex].frameStamp) <= maxFrameGap)
+                (lastTime - buffer[bufferIndex].realTimeStamp) <= maxFrameGap)
             {
                 matchedIndices.Add(bufferIndex);
-                lastTime = buffer[bufferIndex].frameStamp;
+                lastTime = buffer[bufferIndex].realTimeStamp;
                 seqIndex--;
-                Debug.LogWarning( "seqIndex:  " + seqIndex);
                 if (seqIndex < 0) break;
             }
             bufferIndex--;
@@ -94,13 +93,9 @@ public class InputBufferModule
                 if (idx >= 0 && idx < buffer.Count)
                     buffer.RemoveAt(idx);
             }
+            PrintBuffer();
             Debug.Log($"Combo detected and consumed: {string.Join(" -> ", sequence)}");
         }
-        else if (!success)
-        {
-            Debug.Log($"Combo failed: {string.Join(" -> ", sequence)}, Buffer: {string.Join(", ", buffer.Select(b => b.action))}");
-        }
-
         return success;
     }
 
@@ -111,19 +106,20 @@ public class InputBufferModule
     }
 
     // Debug helper to print buffer contents
-    private void PrintBuffer()
+     private void PrintBuffer()
     {
-        /* string debug = string.Join(", ", buffer.Select(b =>
-            $"{b.action}(f:{currentFrame - b.frameStamp}, t:{Time.realtimeSinceStartup - b.realTimeStamp:F2}s)")); */
         Debug.Log($"Current Frame: {currentFrame}, Buffer: " +
-            string.Join(", ", buffer.Select(b => $"{b.action}(f:{currentFrame - b.frameStamp})")));
+            string.Join(", ", buffer.Select(b => 
+                $"{b.action}(f:{currentFrame - b.frameStamp}, t:{Time.fixedTime - b.realTimeStamp:F2}s)")));
     }
     public void Tick()
     {
-        currentFrame = Time.frameCount;
+        currentFrame++;
 
-        // Only remove expired inputs
-        buffer.RemoveAll(b => (currentFrame - b.frameStamp) > bufferFrames);
+         buffer.RemoveAll(b => 
+            (currentFrame - b.frameStamp) > bufferFrames || 
+            (Time.fixedTime - b.realTimeStamp) > bufferTimeInSeconds
+        );
     }
 
     public void Cleanup()
