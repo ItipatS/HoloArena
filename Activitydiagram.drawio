@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0" version="28.1.0">
   <diagram id="prtHgNgQTEPvFCAcTncT" name="Page-1">
-    <mxGraphModel dx="3427" dy="2209" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4232" dy="2682" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -385,8 +385,8 @@
         <mxCell id="-ZEXvn5pEk6e0Feumyof-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-10" source="-ZEXvn5pEk6e0Feumyof-13" target="OrGtIaO31I0Me9HCod5W-48">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="-ZEXvn5pEk6e0Feumyof-13" value="ตรวจสอบการชนของ Hitbox กับ Hurtbox" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="c57PVvVjm2TMvXlCOmgX-10">
-          <mxGeometry x="112.75999999999954" y="890" width="120" height="36" as="geometry" />
+        <mxCell id="-ZEXvn5pEk6e0Feumyof-13" value="แสดงผลการโจมตี" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="c57PVvVjm2TMvXlCOmgX-10">
+          <mxGeometry x="119.13000000000001" y="890" width="107.24" height="30" as="geometry" />
         </mxCell>
         <mxCell id="OrGtIaO31I0Me9HCod5W-48" value="" style="strokeWidth=6;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;fillColor=default;" parent="c57PVvVjm2TMvXlCOmgX-10" vertex="1">
           <mxGeometry x="152.76" y="960" width="40" height="40" as="geometry" />
@@ -394,17 +394,17 @@
         <mxCell id="-ZEXvn5pEk6e0Feumyof-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-10" source="UHZkEh0On67kmJrWjUu7-10" target="-ZEXvn5pEk6e0Feumyof-13">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="UHZkEh0On67kmJrWjUu7-10" value="ทำให้ตัวละครโจมตี" style="rounded=1;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" vertex="1">
+        <mxCell id="UHZkEh0On67kmJrWjUu7-10" value="ดำเนินการโจมตี" style="rounded=1;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" vertex="1">
           <mxGeometry x="120.25999999999955" y="820" width="105" height="30" as="geometry" />
         </mxCell>
         <mxCell id="UHZkEh0On67kmJrWjUu7-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" source="c57PVvVjm2TMvXlCOmgX-113" target="UHZkEh0On67kmJrWjUu7-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="c57PVvVjm2TMvXlCOmgX-277" value="&lt;b&gt;&lt;span style=&quot;font-family: &amp;quot;TH SarabunPSK&amp;quot;, sans-serif;&quot; lang=&quot;TH&quot;&gt;&lt;font&gt;การโจมตีพิเศษ&lt;/font&gt;&lt;/span&gt;&lt;/b&gt;" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-660" y="30" width="430" height="830" as="geometry" />
+          <mxGeometry x="-660" y="30" width="430" height="860" as="geometry" />
         </mxCell>
         <mxCell id="c57PVvVjm2TMvXlCOmgX-278" value="ผู้เล่น" style="swimlane;startSize=20;html=1;" parent="c57PVvVjm2TMvXlCOmgX-277" vertex="1">
-          <mxGeometry y="20" width="110" height="810" as="geometry" />
+          <mxGeometry y="20" width="110" height="840" as="geometry" />
         </mxCell>
         <mxCell id="c57PVvVjm2TMvXlCOmgX-279" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;กดอินพุต&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-278" vertex="1">
           <mxGeometry x="23.5" y="110" width="63" height="30" as="geometry" />
@@ -415,15 +415,12 @@
         <mxCell id="OrGtIaO31I0Me9HCod5W-56" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" parent="c57PVvVjm2TMvXlCOmgX-278" vertex="1">
           <mxGeometry x="35" y="35" width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="OrGtIaO31I0Me9HCod5W-51" value="" style="strokeWidth=6;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;fillColor=default;" parent="c57PVvVjm2TMvXlCOmgX-278" vertex="1">
-          <mxGeometry x="31.000000000000014" y="638" width="40" height="40" as="geometry" />
-        </mxCell>
         <mxCell id="-ZEXvn5pEk6e0Feumyof-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-277" source="c57PVvVjm2TMvXlCOmgX-279" target="c57PVvVjm2TMvXlCOmgX-281">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <UserObject label="FighterAttackModule" id="c57PVvVjm2TMvXlCOmgX-286">
           <mxCell style="swimlane;startSize=20;html=1;" parent="c57PVvVjm2TMvXlCOmgX-277" vertex="1">
-            <mxGeometry x="110" y="20" width="320" height="810" as="geometry" />
+            <mxGeometry x="110" y="20" width="320" height="840" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="-ZEXvn5pEk6e0Feumyof-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-286" source="c57PVvVjm2TMvXlCOmgX-296" target="c57PVvVjm2TMvXlCOmgX-338">
@@ -432,8 +429,11 @@
         <mxCell id="c57PVvVjm2TMvXlCOmgX-296" value="มีพลังงานเพียงพอ" style="rounded=1;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-286" vertex="1">
           <mxGeometry x="80.99999999999955" y="400" width="105" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="c57PVvVjm2TMvXlCOmgX-312" value="ทำให้ตัวละครโจมตีพิเศษ" style="rounded=1;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-286" vertex="1">
-          <mxGeometry x="73.49999999999955" y="640" width="120" height="36" as="geometry" />
+        <mxCell id="-ZEXvn5pEk6e0Feumyof-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-286" source="c57PVvVjm2TMvXlCOmgX-312" target="-ZEXvn5pEk6e0Feumyof-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c57PVvVjm2TMvXlCOmgX-312" value="ดำเนินการโจมตีพิเศษ" style="rounded=1;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-286" vertex="1">
+          <mxGeometry x="73.49999999999955" y="630" width="120" height="36" as="geometry" />
         </mxCell>
         <mxCell id="c57PVvVjm2TMvXlCOmgX-329" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="c57PVvVjm2TMvXlCOmgX-286" source="c57PVvVjm2TMvXlCOmgX-330" target="c57PVvVjm2TMvXlCOmgX-333" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -468,6 +468,9 @@
         <mxCell id="c57PVvVjm2TMvXlCOmgX-340" value="ใช่" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="c57PVvVjm2TMvXlCOmgX-286" vertex="1">
           <mxGeometry x="88.49999999999955" y="510" width="40" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="-ZEXvn5pEk6e0Feumyof-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-286" source="c57PVvVjm2TMvXlCOmgX-342" target="c57PVvVjm2TMvXlCOmgX-312">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="c57PVvVjm2TMvXlCOmgX-342" value="ล็อคการเคลื่อนไหว" style="rounded=1;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-286" vertex="1">
           <mxGeometry x="80.99999999999955" y="560" width="105" height="30" as="geometry" />
         </mxCell>
@@ -489,11 +492,14 @@
         <mxCell id="-ZEXvn5pEk6e0Feumyof-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-286" source="c57PVvVjm2TMvXlCOmgX-338" target="OrGtIaO31I0Me9HCod5W-50">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="-ZEXvn5pEk6e0Feumyof-12" value="ตรวจสอบการชนของ Hitbox กับ Hurtbox" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="c57PVvVjm2TMvXlCOmgX-286">
-          <mxGeometry x="76.99999999999955" y="730" width="120" height="36" as="geometry" />
-        </mxCell>
-        <mxCell id="-ZEXvn5pEk6e0Feumyof-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-277" source="c57PVvVjm2TMvXlCOmgX-312" target="OrGtIaO31I0Me9HCod5W-51">
+        <mxCell id="-ZEXvn5pEk6e0Feumyof-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-286" source="-ZEXvn5pEk6e0Feumyof-18" target="OrGtIaO31I0Me9HCod5W-51">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-ZEXvn5pEk6e0Feumyof-18" value="แสดงผลการโจมตี" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="c57PVvVjm2TMvXlCOmgX-286">
+          <mxGeometry x="79.88" y="710" width="107.24" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OrGtIaO31I0Me9HCod5W-51" value="" style="strokeWidth=6;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;fillColor=default;" parent="c57PVvVjm2TMvXlCOmgX-286" vertex="1">
+          <mxGeometry x="113.49999999999999" y="780" width="40" height="40" as="geometry" />
         </mxCell>
         <mxCell id="OrGtIaO31I0Me9HCod5W-1" value="&lt;font face=&quot;TH SarabunPSK, sans-serif&quot;&gt;เลือกโหมดเกม&lt;/font&gt;" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" parent="1" vertex="1">
           <mxGeometry x="-1470" y="1846" width="420" height="510" as="geometry" />
