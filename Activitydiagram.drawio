@@ -418,7 +418,7 @@
         <mxCell id="-ZEXvn5pEk6e0Feumyof-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-277" source="c57PVvVjm2TMvXlCOmgX-279" target="c57PVvVjm2TMvXlCOmgX-281">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <UserObject label="FighterAttackModule" id="c57PVvVjm2TMvXlCOmgX-286">
+        <UserObject label="ระบบเกม" id="c57PVvVjm2TMvXlCOmgX-286">
           <mxCell style="swimlane;startSize=20;html=1;" parent="c57PVvVjm2TMvXlCOmgX-277" vertex="1">
             <mxGeometry x="110" y="20" width="320" height="840" as="geometry" />
           </mxCell>
