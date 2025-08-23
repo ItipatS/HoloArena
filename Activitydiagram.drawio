@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0" version="28.1.1">
   <diagram id="prtHgNgQTEPvFCAcTncT" name="Page-1">
-    <mxGraphModel dx="4017" dy="2556" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="5199" dy="3249" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -272,7 +272,7 @@
         <mxCell id="UHZkEh0On67kmJrWjUu7-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" source="c57PVvVjm2TMvXlCOmgX-107" target="OrGtIaO31I0Me9HCod5W-47" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="wYJEiwNmxTXoeErvehKY-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-10" source="c57PVvVjm2TMvXlCOmgX-107" target="wYJEiwNmxTXoeErvehKY-1">
+        <mxCell id="wYJEiwNmxTXoeErvehKY-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" source="c57PVvVjm2TMvXlCOmgX-107" target="wYJEiwNmxTXoeErvehKY-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="c57PVvVjm2TMvXlCOmgX-107" value="" style="rhombus;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" vertex="1">
@@ -308,16 +308,16 @@
         <mxCell id="UHZkEh0On67kmJrWjUu7-10" value="Perform Attack" style="rounded=1;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" vertex="1">
           <mxGeometry x="130.00999999999954" y="800" width="105" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="wYJEiwNmxTXoeErvehKY-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-10" source="wYJEiwNmxTXoeErvehKY-1" target="wYJEiwNmxTXoeErvehKY-2">
+        <mxCell id="wYJEiwNmxTXoeErvehKY-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" source="wYJEiwNmxTXoeErvehKY-1" target="wYJEiwNmxTXoeErvehKY-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="wYJEiwNmxTXoeErvehKY-1" value="Update UI" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="c57PVvVjm2TMvXlCOmgX-10">
+        <mxCell id="wYJEiwNmxTXoeErvehKY-1" value="Update UI" style="rounded=1;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" vertex="1">
           <mxGeometry x="129.99999999999955" y="690" width="105" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="wYJEiwNmxTXoeErvehKY-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="c57PVvVjm2TMvXlCOmgX-10" source="wYJEiwNmxTXoeErvehKY-2" target="UHZkEh0On67kmJrWjUu7-10">
+        <mxCell id="wYJEiwNmxTXoeErvehKY-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" source="wYJEiwNmxTXoeErvehKY-2" target="UHZkEh0On67kmJrWjUu7-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="wYJEiwNmxTXoeErvehKY-2" value="Lock Movement" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="c57PVvVjm2TMvXlCOmgX-10">
+        <mxCell id="wYJEiwNmxTXoeErvehKY-2" value="Lock Movement" style="rounded=1;whiteSpace=wrap;html=1;" parent="c57PVvVjm2TMvXlCOmgX-10" vertex="1">
           <mxGeometry x="130.00999999999954" y="750" width="105" height="30" as="geometry" />
         </mxCell>
         <mxCell id="c57PVvVjm2TMvXlCOmgX-277" value="&lt;b&gt;&lt;span style=&quot;font-family: &amp;quot;TH SarabunPSK&amp;quot;, sans-serif;&quot; lang=&quot;TH&quot;&gt;&lt;font&gt;การโจมตีพิเศษ&lt;/font&gt;&lt;/span&gt;&lt;/b&gt;" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" parent="1" vertex="1">
@@ -569,7 +569,7 @@
         <mxCell id="we9bnZYUlY-Ih3BmjjNU-99" value="Display pause menu" style="rounded=1;whiteSpace=wrap;html=1;" parent="GW8B8ZwVW4DBcdeej7Vw-37" vertex="1">
           <mxGeometry x="41.25" y="184" width="137.5" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="wYJEiwNmxTXoeErvehKY-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="GW8B8ZwVW4DBcdeej7Vw-31" source="GW8B8ZwVW4DBcdeej7Vw-33" target="GW8B8ZwVW4DBcdeej7Vw-38">
+        <mxCell id="wYJEiwNmxTXoeErvehKY-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="GW8B8ZwVW4DBcdeej7Vw-31" source="GW8B8ZwVW4DBcdeej7Vw-33" target="GW8B8ZwVW4DBcdeej7Vw-38" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GW8B8ZwVW4DBcdeej7Vw-66" value="&lt;b&gt;&lt;span style=&quot;font-family: &amp;quot;TH SarabunPSK&amp;quot;, sans-serif;&quot; lang=&quot;TH&quot;&gt;&lt;font&gt;การพุ่ง&lt;/font&gt;&lt;/span&gt;&lt;/b&gt;" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" parent="1" vertex="1">
@@ -804,8 +804,8 @@
         <mxCell id="we9bnZYUlY-Ih3BmjjNU-93" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="we9bnZYUlY-Ih3BmjjNU-86" source="we9bnZYUlY-Ih3BmjjNU-88" target="we9bnZYUlY-Ih3BmjjNU-92" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="we9bnZYUlY-Ih3BmjjNU-88" value="มีผู้เล่นเอาชนะได้3ครั้ง&lt;br&gt;Player win 3 times" style="rounded=1;whiteSpace=wrap;html=1;" parent="we9bnZYUlY-Ih3BmjjNU-86" vertex="1">
-          <mxGeometry x="41.25" y="120" width="137.5" height="40" as="geometry" />
+        <mxCell id="we9bnZYUlY-Ih3BmjjNU-88" value="Player win 3 times" style="rounded=1;whiteSpace=wrap;html=1;" parent="we9bnZYUlY-Ih3BmjjNU-86" vertex="1">
+          <mxGeometry x="41.25" y="120" width="137.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="we9bnZYUlY-Ih3BmjjNU-89" value="" style="strokeWidth=6;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;fillColor=default;" parent="we9bnZYUlY-Ih3BmjjNU-86" vertex="1">
           <mxGeometry x="90" y="440" width="40" height="40" as="geometry" />
