@@ -22,12 +22,15 @@ public class AnimationEvent : MonoBehaviour, ICharacterModule
     public void DeactiveHitbox()
     {
         AttackModule.DeactivateHitbox();
-    } 
-     public void FixedTick()
-    {
-    }
-    public void Tick()
-    {
     }
 
+    public void Tick(float deltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void FixedTick(float fixedDeltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
 }

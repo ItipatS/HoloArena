@@ -21,12 +21,12 @@ public class StatModule : MonoBehaviour, ICharacterModule
         InitializeStatDictionaries();
     }
 
-    public void Tick()
+    public void Tick(float deltaTime)
     {
 
     }
 
-    public void FixedTick()
+    public void FixedTick(float fixedDeltaTime)
     {
         if (currentStats.currentStamina < currentStats.maxStamina)
         {

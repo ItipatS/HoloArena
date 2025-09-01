@@ -36,14 +36,6 @@ public class Hurtbox : MonoBehaviour, ICharacterModule
             Debug.LogWarning("No BlockModule found in parent!");
         }
     }
-
-    public void Tick()
-    {
-    }
-
-    public void FixedTick()
-    {
-    }
     protected bool IsBlocking => blockModule != null && blockModule.IsBlocking;
 
     private void OnDrawGizmos()
@@ -158,4 +150,13 @@ public class Hurtbox : MonoBehaviour, ICharacterModule
         AudioManager.Instance.PlaySound("Hit");
     }
 
+    public void Tick(float deltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void FixedTick(float fixedDeltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
 }

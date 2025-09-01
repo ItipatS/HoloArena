@@ -37,9 +37,9 @@ public class GravityComponent : MonoBehaviour, ICharacterModule
         statModule = controller.GetModule<StatModule>();
     }
 
-    public void Tick()
+    public void Tick(float deltaTime)
     {
-        jumpCooldownTimer = Mathf.Max(0, jumpCooldownTimer - Time.deltaTime);
+        jumpCooldownTimer = Mathf.Max(0, jumpCooldownTimer - deltaTime);
 
         HandleJumpInput();
         if (groundCheck.IsGrounded && isJumping && (Time.time - jumpStartTime > jumpIgnoreDuration))
@@ -48,9 +48,9 @@ public class GravityComponent : MonoBehaviour, ICharacterModule
         }
     }
 
-    public void FixedTick()
+    public void FixedTick(float fixedDeltaTime)
     {
-        ApplyGravityAndJump();
+        ApplyGravityAndJump(fixedDeltaTime);
     }
 
     private void HandleJumpInput()
@@ -101,7 +101,7 @@ public class GravityComponent : MonoBehaviour, ICharacterModule
     }
 
 
-    private void ApplyGravityAndJump()
+    private void ApplyGravityAndJump(float fixedDeltaTime)
     {
         if (jumpRequested)
         {
@@ -112,7 +112,7 @@ public class GravityComponent : MonoBehaviour, ICharacterModule
         Vector3 velocity = rb.velocity;
 
         // Only apply grounded override if we're not in the jump grace period.
-        if (groundCheck.IsGrounded && !isJumping && velocity.y <= 0 && (jumpStartTime < 0 || Time.fixedDeltaTime - jumpStartTime > jumpIgnoreDuration))
+        if (groundCheck.IsGrounded && !isJumping && velocity.y <= 0 && (jumpStartTime < 0 || fixedDeltaTime - jumpStartTime > jumpIgnoreDuration))
         {
             velocity.y = -0.1f;
         }
@@ -123,7 +123,7 @@ public class GravityComponent : MonoBehaviour, ICharacterModule
                 gravity *= fallGravityMultiplier;
             }
 
-            velocity.y += gravity * Time.fixedDeltaTime;
+            velocity.y += gravity * fixedDeltaTime;
             velocity.y = Mathf.Max(velocity.y, terminalVelocity);
         }
 

@@ -46,7 +46,7 @@ public class MovementModule : MonoBehaviour, ICharacterModule
         currentSpeed = 0f;
     }
 
-    public void Tick()
+    public void Tick(float deltaTime)
     {
         if (isMovementLocked) return;
 
@@ -58,13 +58,13 @@ public class MovementModule : MonoBehaviour, ICharacterModule
         }
     }
 
-    public void FixedTick()
+    public void FixedTick(float fixedDeltaTime)
     {
         if (isMovementLocked) return;
 
         if (isDashing)
         {
-            dashTimer -= Time.fixedDeltaTime;
+            dashTimer -= fixedDeltaTime;
             rb.velocity = new Vector3(dashDirection.x, 0, dashDirection.z) * dashSpeed + Vector3.up * rb.velocity.y;
 
             if (dashTimer <= 0f)
@@ -78,13 +78,13 @@ public class MovementModule : MonoBehaviour, ICharacterModule
         }
         else if (isSliding)
         {
-            UpdateSliding();
+            UpdateSliding(fixedDeltaTime);
         }
         else
         {
-            UpdateMovement();
+            UpdateMovement(fixedDeltaTime);
         }
-        UpdateRotation();
+        UpdateRotation(fixedDeltaTime);
     }
     private void StartSliding()
     {
@@ -93,13 +93,13 @@ public class MovementModule : MonoBehaviour, ICharacterModule
         // Notify state machine (e.g., via event or direct call)
     }
 
-    private void UpdateSliding()
+    private void UpdateSliding(float fixedDeltaTime)
     {
-        currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, slideDeceleration * Time.fixedDeltaTime);
+        currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, slideDeceleration * fixedDeltaTime);
         moveVelocity = moveInput * currentSpeed;
         rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
 
-        slideTimer -= Time.fixedDeltaTime;
+        slideTimer -= fixedDeltaTime;
         if (slideTimer <= 0f || currentSpeed <= 0.1f)
         {
             isSliding = false;
@@ -170,7 +170,7 @@ public class MovementModule : MonoBehaviour, ICharacterModule
     }
 
 
-    private void UpdateMovement()
+    private void UpdateMovement(float fixedDeltaTime)
     {
         float targetSpeed = moveInput != Vector3.zero ? statModule.GetStat("speed") : 0f;
 
@@ -178,25 +178,25 @@ public class MovementModule : MonoBehaviour, ICharacterModule
             targetSpeed *= airControlMultiplier;
 
         float accel = moveInput != Vector3.zero ? statModule.GetStat("acceleration") : statModule.GetStat("deceleration");
-        currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, accel * Time.fixedDeltaTime);
+        currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, accel * fixedDeltaTime);
 
         moveVelocity = moveInput * currentSpeed;
 
         rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
     }
 
-    private void UpdateRotation()
+    private void UpdateRotation(float fixedDeltaTime)
     {
         Vector3 horizontalInput = new Vector3(moveInput.x, 0, moveInput.z);
 
         if (horizontalInput != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(horizontalInput, Vector3.up);
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * fixedDeltaTime));
         }
         else
         {
-            AutoFaceOpponent(opponent);
+            AutoFaceOpponent(opponent, fixedDeltaTime);
         }
     }
 
@@ -249,7 +249,7 @@ public class MovementModule : MonoBehaviour, ICharacterModule
     public bool HasMovementInput => inputModule.IsKeyHeld("Right") || inputModule.IsKeyHeld("Left") ||
                                    inputModule.IsKeyHeld("Forward") || inputModule.IsKeyHeld("Backward");
 
-    private void AutoFaceOpponent(Transform opponent)
+    private void AutoFaceOpponent(Transform opponent, float fixedDeltaTime)
     {
         if (opponent == null)
             return;
@@ -266,7 +266,7 @@ public class MovementModule : MonoBehaviour, ICharacterModule
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
         // Calculate the maximum rotation allowed this FixedUpdate.
-        float maxDegreesDelta = 270f * Time.fixedDeltaTime;
+        float maxDegreesDelta = 270f * fixedDeltaTime;
 
         // Smoothly rotate towards the target rotation.
         Quaternion newRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, maxDegreesDelta);

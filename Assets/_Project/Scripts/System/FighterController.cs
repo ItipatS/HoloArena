@@ -3,16 +3,22 @@ using UnityEngine;
 
 public class FighterController : MonoBehaviour
 {
+     [Header("Injected for POCO modules")]
+    [SerializeField] private MoveProfile_SO moveProfile;
+    [SerializeField] private MovementModule movementModule; // can be MB for now
+    [SerializeField] private StatModule statModule;         // can be MB for now
+    [SerializeField] private Hitbox hitbox;
+    [SerializeField] private Hurtbox hurtbox;
+    [SerializeField] private FighterFacade facade;
     private Rigidbody rb;
     private Animator animator;
     private List<ICharacterModule> modules = new List<ICharacterModule>();
     private bool isActive = true;
-
-
     private InputBufferModule inputBuffer = new InputBufferModule(.35f, 60);
     public InputBufferModule InputBuffer => inputBuffer;
     public Rigidbody Rigidbody => rb;
     public Animator Animator => animator;
+    
 
     void Awake()
     {
@@ -41,9 +47,10 @@ public class FighterController : MonoBehaviour
     {
         if (!isActive) return;
 
+        float deltaTime = Time.deltaTime;
         foreach (var module in modules)
         {
-            module.Tick();
+            module.Tick(deltaTime);
         }
     }
 
@@ -51,9 +58,10 @@ public class FighterController : MonoBehaviour
     {
         if (!isActive) return;
 
+        float fixedDeltaTime = Time.fixedDeltaTime;
         foreach (var module in modules)
         {
-            module.FixedTick();
+            module.FixedTick(fixedDeltaTime);
         }
     }
 

@@ -68,11 +68,11 @@ public class FighterStateMachineController : MonoBehaviour, ICharacterModule
         HitEventManager.OnCharacterHit -= HandleCharacterHit;
     }
 
-    public void Tick()
+    public void Tick(float deltaTime)
     {
         FighterSM.Driver.Tick.Invoke();
     }
-    public void FixedTick()
+    public void FixedTick(float fixedDeltaTime)
     {
         FighterSM.Driver.FixedTick.Invoke();
     }

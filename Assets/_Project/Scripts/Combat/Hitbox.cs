@@ -14,12 +14,6 @@ public class Hitbox : MonoBehaviour, ICharacterModule
     public void Initialize(FighterController controller)
     {}
 
-    public void Tick()
-    {}
-
-    public void FixedTick()
-    {}
-
     private void OnEnable()
     {
         // When enabled, automatically disable after a short duration.
@@ -70,5 +64,15 @@ public class Hitbox : MonoBehaviour, ICharacterModule
             Gizmos.color = debugColor;
             Gizmos.DrawWireCube(transform.position, Vector3.one);
         }
+    }
+
+    public void Tick(float deltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void FixedTick(float fixedDeltaTime)
+    {
+        throw new System.NotImplementedException();
     }
 }

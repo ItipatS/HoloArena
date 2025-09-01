@@ -25,11 +25,11 @@ public class FighterFacade : MonoBehaviour, ICharacterModule
         BlockModule = controller.GetModule<FighterBlockModule>();
     }
 
-    public void Tick()
+    public void Tick(float deltaTime)
     {
     }
 
-    public void FixedTick()
+    public void FixedTick(float fixedDeltaTime)
     {
     }
     public bool HasMovementInput => MovementModule != null && MovementModule.HasMovementInput;
@@ -37,6 +37,6 @@ public class FighterFacade : MonoBehaviour, ICharacterModule
     public bool CanJump => GroundCheckModule != null && GroundCheckModule.CanJump;
     public bool IsInAir => GroundCheckModule != null && !GroundCheckModule.IsGrounded;
     public bool IsSliding => MovementModule != null && MovementModule.IsSliding;
-    public bool IsAttacking => AttackModule != null && AttackModule.isAttacking;
+    public bool IsAttacking => AttackModule != null && AttackModule.IsAttacking;
     public bool IsBlocking => BlockModule != null && BlockModule.IsBlocking;
 }

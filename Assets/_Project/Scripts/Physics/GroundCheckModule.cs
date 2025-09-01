@@ -24,9 +24,9 @@ public class GroundCheckModule : MonoBehaviour, ICharacterModule
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
-    public void Tick() { }
+    public void Tick(float deltaTime) { }
 
-    public void FixedTick()
+    public void FixedTick(float fixedDeltaTime)
     {
         CheckGrounded();
     }

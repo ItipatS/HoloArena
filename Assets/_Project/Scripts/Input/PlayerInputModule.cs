@@ -180,7 +180,7 @@ public class PlayerInputModule : MonoBehaviour, ICharacterModule
 
     public bool CheckInputInWindow(string action, float timeWindow) => inputWindowChecker.CheckInputInWindow(action, timeWindow);
 
-    public void FixedTick()
+    public void FixedTick(float fixedDeltaTime)
     {
         inputBuffer.Tick();
         inputWindowChecker.Cleanup();
@@ -191,7 +191,5 @@ public class PlayerInputModule : MonoBehaviour, ICharacterModule
         OnDisable(); // Clean up subscriptions
     }
 
-    public void Tick()
-    {
-    }
+    public void Tick(float deltaTime) { }
 }

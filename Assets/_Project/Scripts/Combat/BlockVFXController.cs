@@ -13,11 +13,11 @@ public class BlockVFXController : MonoBehaviour,ICharacterModule
             blockMaterial = rend.material;
         }
     }
-    public void FixedTick()
+    public void FixedTick(float fixedDeltaTime)
     {
     }
 
-    public void Tick()
+    public void Tick(float deltaTime)
     {
     }
 

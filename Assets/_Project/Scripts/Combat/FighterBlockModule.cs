@@ -34,7 +34,7 @@ public class FighterBlockModule : MonoBehaviour, ICharacterModule
     protected bool IsInAir => groundCheck != null && !groundCheck.IsGrounded;
 
     // Tick: runs every rendered frame. Capture input here.
-    public void Tick()
+    public void Tick(float deltaTime)
     {
         HandleBlockInput();
     }
@@ -62,7 +62,7 @@ public class FighterBlockModule : MonoBehaviour, ICharacterModule
     }
 
     // FixedTick: process the block request on a fixed timestep.
-    public void FixedTick()
+    public void FixedTick(float fixedDeltaTime)
     {
         if (blockRequested && !IsBlocking)
         {
