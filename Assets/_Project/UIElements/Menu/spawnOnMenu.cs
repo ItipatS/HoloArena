@@ -23,8 +23,14 @@ public class spawnOnMenu : MonoBehaviour
         FighterController controller2 = player2.GetComponent<FighterController>();
 
         // Assign Player IDs
-        controller1.GetModule<PlayerInputModule>().playerID = PlayerID.Player1;
-        controller2.GetModule<PlayerInputModule>().playerID = PlayerID.Player2;
+        PlayerInputModule playerInput1 = controller1.GetModule<PlayerInputModule>();
+        PlayerInputModule playerInput2 = controller2.GetModule<PlayerInputModule>();
+        // Assign Player IDs
+        playerInput1.playerID = PlayerID.Player1;
+        playerInput2.playerID = PlayerID.Player2;
+
+        playerInput1.DetermineControlScheme();
+        playerInput2.DetermineControlScheme();
 
         controller1.GetModule<MovementModule>().SetOpponent(player2.transform);
         controller2.GetModule<MovementModule>().SetOpponent(player1.transform);

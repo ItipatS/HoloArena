@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MatchManager : MonoBehaviour
 {
@@ -97,9 +98,14 @@ public class MatchManager : MonoBehaviour
         FighterController controller1 = player1.GetComponent<FighterController>();
         FighterController controller2 = player2.GetComponent<FighterController>();
 
+        PlayerInputModule playerInput1 = controller1.GetModule<PlayerInputModule>();
+        PlayerInputModule playerInput2 = controller2.GetModule<PlayerInputModule>();
         // Assign Player IDs
-        controller1.GetModule<PlayerInputModule>().playerID = PlayerID.Player1;
-        controller2.GetModule<PlayerInputModule>().playerID = PlayerID.Player2;
+        playerInput1.playerID = PlayerID.Player1;
+        playerInput2.playerID = PlayerID.Player2;
+
+        playerInput1.DetermineControlScheme();
+        playerInput2.DetermineControlScheme();
 
         controller1.GetModule<MovementModule>().SetOpponent(player2.transform);
         controller2.GetModule<MovementModule>().SetOpponent(player1.transform);
