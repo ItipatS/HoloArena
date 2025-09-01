@@ -19,9 +19,7 @@ The game features:
 ## Project Structure & Highlights
 
 ###  Scripts (Core Game Logic)
-
 Located in the `Scripts/` folder, the project follows a **modular, component-based approach** where each mechanic (movement, gravity, stats, attack) is implemented as its own self-contained module. This makes it easy to:
-
 - **Extend functionality** (e.g., add new mechanics without editing existing scripts).
 - **Maintain and debug** (e.g., each module has a clear responsibility).
 - **Reuse across characters or games** with minimal coupling.
@@ -31,11 +29,12 @@ Notable principles:
 - **Loose coupling:** Each module communicates via interfaces and is managed through a central controller.
 - **Scalable logic:** New modules can be plugged into the core loop without modifying the base character structure.
 
+- [View Scripts Folder](./Assets/_Project/Scripts)
 >  Example: `GroundCheckModule`, `GravityComponent`, and `CharacterStat` are fully reusable and can be assigned per-character via the Inspector.
-
 ---
 
 ###  UI System
+
 
 Located in the `UIElements/` folder, the project includes responsive UI components for:
 - Main menu navigation
@@ -47,12 +46,30 @@ Highlights:
 - **UI scripts are fully decoupled from logic**, making them easy to replace or animate.
 - **Animator-driven buttons** enhance user feedback using `ButtonAnimatorUtility`.
 - UI managers are **scene-aware** and follow naming conventions, making them easy to identify and swap.
-
+  
+- [View UI Folder](./Assets/_Project/UIElements)
 >  Designed to be intuitive, readable, and extendable, especially for team handoff or designer collaboration.
-
 ---
+# Demo Video
+[![Watch the demo](https://img.youtube.com/vi/6s0k-Z0F8c8/hqdefault.jpg)🔗](https://www.youtube.com/watch?v=6s0k-Z0F8c8)
+---
+### Visual Effects & Shader Work
 
-## 🔄 Reusability & Maintainability
+- This project also includes custom shader effects to enhance player feedback and UI-less design:
+
+- Energy levels and combat status are visualized through in-world shader effects (e.g., glow, saturation, or outline changes).
+
+- Shader-driven feedback replaces traditional UI bars, creating a cleaner and more immersive game experience.
+
+- Effects are tied to gameplay states (e.g., energy low = pulsing glow), and support stacking indicators for more complex mechanics.
+  
+- [View VFX Folder](./Assets/_Project/VFX)
+> Built with Unity's Built-in Render Pipeline and custom shader scripts (without relying on URP/HDRP), designed to run efficiently on low-spec devices.
+---
+# Demo Video
+[![Watch the demo](https://img.youtube.com/vi/NoEU0BiMYJQ/hqdefault.jpg)🔗](https://www.youtube.com/watch?v=NoEU0BiMYJQ)
+---
+##  Reusability & Maintainability
 
 This project is designed to be:
 - **Scalable:** Add new mechanics or characters without rewriting existing systems.
@@ -67,6 +84,6 @@ All models, music, and effects included are either created by me or under a lice
 
 
 ## 📌 Author Note
-
+Built and maintained by Itipat Songsampansakul as part of a portfolio project.
 This is a solo project built with ~1 year of Unity experience, emphasizing hands-on learning, scalable systems, and code organization. It's a work-in-progress but already demonstrates strong foundations in gameplay logic, UI flow, and clean software design.
 
