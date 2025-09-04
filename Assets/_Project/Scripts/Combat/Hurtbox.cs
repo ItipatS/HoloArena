@@ -152,11 +152,9 @@ public class Hurtbox : MonoBehaviour, ICharacterModule
 
     public void Tick(float deltaTime)
     {
-        throw new System.NotImplementedException();
     }
 
     public void FixedTick(float fixedDeltaTime)
     {
-        throw new System.NotImplementedException();
     }
 }

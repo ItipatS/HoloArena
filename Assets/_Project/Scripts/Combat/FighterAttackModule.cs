@@ -2,18 +2,17 @@ using UnityEngine;
 using System.Collections;
 using System.Linq;
 
-public class FighterAttackModule : ICharacterModule
+public class FighterAttackModule : MonoBehaviour, ICharacterModule
 {
-    private readonly MoveProfile_SO moveProfile; // Contains both normal and combo moves.
+    [SerializeField] private MoveProfile_SO moveProfile; // Contains both normal and combo moves.
     // Common module references.
-    private readonly MovementModule movementModule;
-    private readonly Animator animator;
-    private readonly StatModule statModule;
-    private readonly InputBufferModule inputBuffer;
-    private readonly Hitbox hitbox;
-    private readonly Hurtbox hurtbox;
-    private readonly FighterFacade facade;
-    private readonly System.Func<IEnumerator, Coroutine> coroutineRunner;
+    private MovementModule movementModule;
+    private Animator animator;
+    private StatModule statModule;
+    private InputBufferModule inputBuffer;
+    private Hitbox hitbox;
+    private Hurtbox hurtbox;
+    private FighterFacade facade;
 
     // Attack state.
     public bool IsAttacking { get; private set; }
@@ -38,107 +37,98 @@ public class FighterAttackModule : ICharacterModule
     }
 
     // --- ICharacterModule Initialization ---
-    // For ICharacterModule compatibility
-    public void Initialize(FighterController controller) { /* Not used in this refactor, use constructor instead */ }
+    public void Initialize(FighterController controller)
+    {
+        hitbox = GetComponentInChildren<Hitbox>(true);
+        hurtbox = GetComponentInChildren<Hurtbox>(true);
+        movementModule = controller.GetModule<MovementModule>();
+        facade = controller.GetModule<FighterFacade>();
+        statModule = controller.GetModule<StatModule>();
+        animator = controller.Animator;
+        inputBuffer = controller.InputBuffer;
+        hitbox.Owner = gameObject;
+        hurtbox.Owner = gameObject;
+        HitEventManager.OnCharacterHit += HandleCharacterHit;
+    }
 
     protected bool IsBlocking => facade.IsBlocking;
     protected bool IsInAir => facade.IsInAir;
 
     private void HandleCharacterHit(GameObject hitCharacter, int hitStop)
     {
-        // Use facade or inject a reference to the owning GameObject if needed
-        if (facade != null && hitCharacter == facade.gameObject)
+        if (hitCharacter == gameObject)
         {
             if (!IsBlocking)
             {
                 CancelAttackRoutine();
             }
+
         }
     }
-    // New constructor for dependency injection
-    public FighterAttackModule(
-        MoveProfile_SO moveProfile,
-        MovementModule movementModule,
-        Animator animator,
-        StatModule statModule,
-        InputBufferModule inputBuffer,
-        Hitbox hitbox,
-        Hurtbox hurtbox,
-        FighterFacade facade,
-        System.Func<IEnumerator, Coroutine> coroutineRunner)
-    {
-        this.moveProfile = moveProfile;
-        this.movementModule = movementModule;
-        this.animator = animator;
-        this.statModule = statModule;
-        this.inputBuffer = inputBuffer;
-        this.hitbox = hitbox;
-        this.hurtbox = hurtbox;
-        this.facade = facade;
-        this.coroutineRunner = coroutineRunner;
-        if (this.hitbox != null) this.hitbox.Owner = facade != null ? facade.gameObject : null;
-        if (this.hurtbox != null) this.hurtbox.Owner = facade != null ? facade.gameObject : null;
-        HitEventManager.OnCharacterHit += HandleCharacterHit;
-    }
+
+    // --- Continuous Updates ---
     public void FixedTick(float fixedDeltaTime)
     {
         // Only allow new attacks if not already attacking and if on the ground.
         if (!IsAttacking && !IsBlocking)
         {
-           if (statModule.currentStats.currentHealth <= 50f)
+            if (statModule.currentStats.currentHealth <= 50f)
             {
+                // Check for special moves first.
                 foreach (var specialSlot in moveProfile.moves.Where(s => s.category == AttackCategory.Special))
-            {
-                string[] specialSequence = specialSlot.attackData.specialInput.Select(x => x.ToString()).ToArray();
-                if (inputBuffer.CheckCommandInput(specialSequence, 60f))
                 {
-                    Debug.LogWarning("Special combo triggered: " + specialSlot.moveName);
-                    CurrentAttack = specialSlot.attackData;
-                    StartAttack(CurrentAttack);
+                    string[] specialSequence = specialSlot.attackData.specialInput.Select(x => x.ToString()).ToArray();
+                    if (inputBuffer.CheckCommandInput(specialSequence, specialSlot.attackData.specialComboMaxGap, consume: true))
+                    {
+                        Debug.LogWarning("Special combo triggered: " + specialSlot.moveName);
+                        CurrentAttack = specialSlot.attackData;
+                        StartCoroutine(ExecuteAttack());
+                        return;
+                    }
                 }
-            }
             }
 
             // Process combo input.
-            if (ProcessComboInput())
-            {
-                AttackData_SO nextComboAttack = GetNextComboAttack();
-                Debug.LogWarning("Combo chain attack: " + (nextComboAttack != null ? nextComboAttack.attackName : "None"));
-                if (nextComboAttack != null)
+                if (ProcessComboInput())
                 {
-                    if (IsInAir && !nextComboAttack.AirAttack)
+                    CurrentAttack = GetNextComboAttack();
+                    Debug.LogWarning("Combo chain attack: " + (CurrentAttack != null ? CurrentAttack.attackName : "None"));
+                    if (CurrentAttack != null)
                     {
-                        // Skip this attack or reset combo if necessary.
-                        ResetCombo();
-                    }
-                    else
-                    {
-                      StartAttack(nextComboAttack);
+                        if (IsInAir && !CurrentAttack.AirAttack)
+                        {
+                            // Skip this attack or reset combo if necessary.
+                            ResetCombo();
+                        }
+                        else
+                        {
+                            StartCoroutine(ExecuteAttack());
+                            return;
+                        }
                     }
                 }
-            }
 
-            var moves = moveProfile.moves;
-            for (int i = 0; i < moves.Count; i++)
+            foreach (var slot in moveProfile.moves.Where(s => s.category != AttackCategory.Special))
             {
-                var slot = moves[i];
-               if (inputBuffer.ConsumeInput(slot.attackData.inputName.ToString()))
+                // Check if this attack should be available in the current state (air or ground)
+                if (inputBuffer.ConsumeInput(slot.attackData.inputName.ToString()))
                 {
                     // If in the air but this attack isn’t allowed, skip it.
                     if (IsInAir && !slot.attackData.AirAttack)
                         continue;
 
                     CurrentAttack = slot.attackData;
-
+                    
                     Debug.LogWarning("Normal attack triggered: " + slot.moveName);
-                    StartAttack(CurrentAttack);
+                    StartCoroutine(ExecuteAttack());
+                    return;
                 }
             }
         }
         // Update the combo timer.
         if (comboTimer > 0f)
         {
-            comboTimer = Mathf.Max(0f, comboTimer - fixedDeltaTime);
+            comboTimer = Mathf.Max(0f, comboTimer - Time.deltaTime);
             if (comboTimer <= 0f)
             {
                 ResetCombo();
@@ -150,10 +140,10 @@ public class FighterAttackModule : ICharacterModule
 
     private bool ProcessComboInput()
     {
+
         // If a combo chain is already in progress, check if the pressed input matches the expected next move.
         if (currentCombo != null)
         {
-            
             AttackData_SO expectedMove = currentCombo.comboMoves[currentComboIndex];
             string expectedInput = expectedMove.inputName.ToString();
             if (inputBuffer.ConsumeInput(expectedInput))
@@ -167,17 +157,17 @@ public class FighterAttackModule : ICharacterModule
         // Check all combo attacks to see if the pressed input matches the first move.
         foreach (var combo in moveProfile.comboAttacks)
         {
-            if (combo.comboMoves == null || combo.comboMoves.Length == 0) continue;
-
-            string firstInput = combo.comboMoves[0].inputName.ToString();
-            
-            if (inputBuffer.ConsumeInput(firstInput))
+            if (combo.comboMoves != null && combo.comboMoves.Length > 0)
             {
-                // Start a new combo chain.
-                currentCombo = combo;
-                currentComboIndex = 0;
-                OnAttackInput();
-                return true;
+                string firstInput = combo.comboMoves[0].inputName.ToString();
+                if (inputBuffer.ConsumeInput(firstInput))
+                {
+                    // Start a new combo chain.
+                    currentCombo = combo;
+                    currentComboIndex = 0;
+                    OnAttackInput();
+                    return true;
+                }
             }
         }
         return false;
@@ -221,30 +211,22 @@ public class FighterAttackModule : ICharacterModule
         currentComboIndex = 0;
         comboTimer = 0f;
     }
-    
-    private void StartAttack(AttackData_SO attack)
-    {
-        if (attack == null || IsAttacking) return;
-        CurrentAttack = attack;
-        IsAttacking = true; 
-        if (coroutineRunner != null) coroutineRunner(ExecuteAttack()); // Start once
-    }
 
     // --- Attack Execution Methods ---
     private IEnumerator ExecuteAttack()
     {
-        AttackData_SO attack = CurrentAttack;
-        if (attack == null) yield break;
-
-        if (!statModule.ConsumeStamina(attack.stamina)) // costs 20 stamina to attack
+        if (statModule.ConsumeStamina(CurrentAttack.stamina)) // costs 20 stamina to attack
         {
-            Debug.Log("Not enough stamina to attack!");
-            yield break;
+            // Proceed with the attack.
+            yield return StartCoroutine(AttackRoutine(CurrentAttack));
         }
-        
-        yield return AttackRoutine(attack);
+        else
+        {
+            // Optionally provide feedback that stamina is too low.
+            Debug.Log("Not enough stamina to attack!");
+        }
     }
-    
+
     private IEnumerator AttackRoutine(AttackData_SO attackData)
     {
         IsAttacking = true;
@@ -263,12 +245,12 @@ public class FighterAttackModule : ICharacterModule
 
         for (int i = 0; i < startupFrames; i++)
         {
-            if (cancelAttack)
-            {
-                CancelAttackRoutine();
-                yield break;
-            }
             yield return new WaitForFixedUpdate();
+        }
+        if (cancelAttack)
+        {
+            CancelAttackRoutine();
+            yield break;
         }
 
         // Active phase: enable the hitbox.
@@ -276,15 +258,21 @@ public class FighterAttackModule : ICharacterModule
         {
             yield return new WaitForFixedUpdate();
         }
+        if (cancelAttack)
+        {
+            CancelAttackRoutine();
+            yield break;
+        }
+
         // Recovery phase.
         for (int i = 0; i < recoveryFrames; i++)
         {
-            if (cancelAttack)
-            {
-                CancelAttackRoutine();
-                yield break;
-            }
             yield return new WaitForFixedUpdate();
+        }
+        if (cancelAttack)
+        {
+            CancelAttackRoutine();
+            yield break;
         }
 
         IsAttacking = false;
@@ -294,32 +282,46 @@ public class FighterAttackModule : ICharacterModule
     public void ActivateHitbox()
     {
         // Retrieve the Hitbox module instead of doing transform.Find("Hitbox")
-        if (hitbox == null || CurrentAttack == null) return;
-
-        Debug.Log("Activating Hitbox for " + CurrentAttack.attackName);
-        hitbox.gameObject.SetActive(true);
-        
-        if (hitbox.TryGetComponent<BoxCollider>(out var collider))
+        if (hitbox != null)
         {
-            collider.size = CurrentAttack.hitboxSize;
-            var center = collider.center;
-            center.z = (CurrentAttack.hitboxSize.z * 0.5f) + 0.5f; // rearOffset
-            collider.center = center;
+            Debug.Log("Activating Hitbox for " + CurrentAttack.attackName);
+
+            StartCoroutine(DelayedActivate());
+
+            IEnumerator DelayedActivate()
+            {
+                yield return new WaitForFixedUpdate();
+                hitbox.gameObject.SetActive(true);
+            }
+
+            // Get the BoxCollider from the Hitbox component.
+            BoxCollider collider = hitbox.GetComponent<BoxCollider>();
+            if (collider != null)
+            {
+                collider.size = CurrentAttack.hitboxSize;
+                float rearOffset = 0.5f;
+                Vector3 center = collider.center;
+                center.z = (CurrentAttack.hitboxSize.z / 2f) + rearOffset;
+                collider.center = center;
+            }
+
+            Vector3 knockbackDirection = transform.forward;  // You could adjust this if needed.
+            Vector3 finalKnockback = knockbackDirection * CurrentAttack.knockbackMagnitude + Vector3.up * CurrentAttack.knockbackVerticalFactor;
+
+            // Now update the Hitbox properties.
+            hitbox.damage = statModule.GetStat("currentattack");
+            hitbox.knockback = finalKnockback;
+            hitbox.activeDuration = CurrentAttack.activeFrames / 60f;
+            hitbox.hitStop = CurrentAttack.hitStop;
         }
-
-        var fwd = (facade != null ? facade.gameObject.transform.forward : Vector3.forward);
-        var kb = fwd * CurrentAttack.knockbackMagnitude + Vector3.up * CurrentAttack.knockbackVerticalFactor;
-
-        hitbox.damage        = statModule.GetStat("currentattack"); // consider a stronger typed API
-        hitbox.knockback     = kb;
-        hitbox.activeDuration= CurrentAttack.activeFrames / 60f;
-        hitbox.hitStop       = CurrentAttack.hitStop;
     }
 
     public void DeactivateHitbox()
     {
-        if (hitbox == null) return;
-        hitbox.gameObject.SetActive(false);
+        if (hitbox != null)
+        {
+            hitbox.gameObject.SetActive(false);
+        }
     }
 
     private void CancelAttackRoutine()
@@ -335,4 +337,5 @@ public class FighterAttackModule : ICharacterModule
         HitEventManager.OnCharacterHit -= HandleCharacterHit;
         // Unsubscribe from any other events as well.
     }
+
 }

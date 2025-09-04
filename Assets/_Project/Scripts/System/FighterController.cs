@@ -3,13 +3,6 @@ using UnityEngine;
 
 public class FighterController : MonoBehaviour
 {
-     [Header("Injected for POCO modules")]
-    [SerializeField] private MoveProfile_SO moveProfile;
-    [SerializeField] private MovementModule movementModule; // can be MB for now
-    [SerializeField] private StatModule statModule;         // can be MB for now
-    [SerializeField] private Hitbox hitbox;
-    [SerializeField] private Hurtbox hurtbox;
-    [SerializeField] private FighterFacade facade;
     private Rigidbody rb;
     private Animator animator;
     private List<ICharacterModule> modules = new List<ICharacterModule>();
@@ -19,7 +12,6 @@ public class FighterController : MonoBehaviour
     public Rigidbody Rigidbody => rb;
     public Animator Animator => animator;
     
-
     void Awake()
     {
         rb = GetComponentInChildren<Rigidbody>();
