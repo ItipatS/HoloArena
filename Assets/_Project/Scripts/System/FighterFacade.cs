@@ -7,7 +7,7 @@ public class FighterFacade : MonoBehaviour, ICharacterModule
     public GroundCheckModule GroundCheckModule { get; private set; }
     public FighterAttackModule AttackModule { get; private set; }
     public FighterBlockModule BlockModule { get; private set; }
-    
+
     // Optionally store a reference to the FighterController if needed.
     private FighterController controller;
 
@@ -39,4 +39,6 @@ public class FighterFacade : MonoBehaviour, ICharacterModule
     public bool IsSliding => MovementModule != null && MovementModule.IsSliding;
     public bool IsAttacking => AttackModule != null && AttackModule.IsAttacking;
     public bool IsBlocking => BlockModule != null && BlockModule.IsBlocking;
+    
+    public bool IsDashing => MovementModule != null && MovementModule.IsDashing;
 }

@@ -32,7 +32,7 @@ public class FighterStateMachineController : MonoBehaviour, ICharacterModule
     protected bool IsSliding => facade.IsSliding;
     protected bool IsAttacking => facade.IsAttacking;
     protected bool IsBlocking => facade.IsBlocking;
-
+    protected bool IsDashing => facade.IsDashing;
     public class Driver
     {
         public StateEvent Tick;
@@ -145,6 +145,26 @@ public class FighterStateMachineController : MonoBehaviour, ICharacterModule
     }
 
     public void Walking_Exit()
+    {
+
+    }
+
+    public void Dashing_Enter()
+    {
+        Debug.Log("FSM: Entering Dashing");
+
+        animator.SetTrigger("Slide");
+    }
+
+    public void Dashing_Tick()
+    { 
+        if (!IsDashing)
+        {
+            FighterSM.ChangeState(FighterState.Idle, StateTransition.Safe);
+        }
+    }
+
+    public void Dashing_Exit()
     {
 
     }

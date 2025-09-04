@@ -52,11 +52,16 @@ public class MultiplayerMenu : MonoBehaviour, INetworkRunnerCallbacks
 
     void SetupButtons()
     {
-        ButtonAnimatorUtility.SetupButton(multiplayer, 10f, OpenMenu);
-        ButtonAnimatorUtility.SetupButton(local, 10f, OnSelectCharacterPressed);
-        ButtonAnimatorUtility.SetupButton(host, 10f, StartHost);
-        ButtonAnimatorUtility.SetupButton(join, 10f, StartClient);
-        ButtonAnimatorUtility.SetupButton(back, 10f, CloseMenu);
+        if (multiplayer != null)
+            ButtonAnimatorUtility.SetupButton(multiplayer, 10f, OpenMenu);
+        if (local != null)
+            ButtonAnimatorUtility.SetupButton(local, 10f, OnSelectCharacterPressed);
+        if (host != null)
+            ButtonAnimatorUtility.SetupButton(host, 10f, StartHost);
+        if (join != null)
+            ButtonAnimatorUtility.SetupButton(join, 10f, StartClient);
+        if (back != null)
+            ButtonAnimatorUtility.SetupButton(back, 10f, CloseMenu);
     }
     private void ShowWindow()
     {

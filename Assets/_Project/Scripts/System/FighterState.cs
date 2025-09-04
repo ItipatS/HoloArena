@@ -10,4 +10,5 @@ public enum FighterState
     Charging,
     Attacking,
     Blocking,
+    Dashing,
 }

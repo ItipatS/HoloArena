@@ -14,6 +14,7 @@ public enum SlideDirection
 public class MainMenuController : MonoBehaviour
 {
     public RectTransform mainMenuPanel;
+    public Button playButton;
     public Button exitButton;
     public SandwichTransition transition;
     public List<MenuButtonAction> menuButtons;
@@ -38,7 +39,14 @@ public class MainMenuController : MonoBehaviour
             UITween.ScalePulse(el.rect.gameObject, el.pulseScale, el.pulseDuration);
         }
 
+        ButtonAnimatorUtility.SetupButton(playButton, 10f, OnSelectCharacterPressed);
         ButtonAnimatorUtility.SetupButton(exitButton, 10f, OnExitPressed);
+    }
+
+    public void OnSelectCharacterPressed()
+    {
+        GameSessionManager.Instance.gameMode = GameMode.Local;
+        DoTransition(() => SceneManager.LoadScene("CharacterSelection"));
     }
 
     public void OnExitPressed()
@@ -75,6 +83,4 @@ public class MainMenuController : MonoBehaviour
                 });
             });
     }
-
-
 }

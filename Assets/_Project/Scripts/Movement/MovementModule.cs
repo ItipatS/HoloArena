@@ -15,6 +15,7 @@ public class MovementModule : MonoBehaviour, ICharacterModule
     private Vector3 moveVelocity; //Current velocity
     private float currentSpeed;
     private bool isSliding;
+    private bool isDashing;
     public bool isMovementLocked { get; private set; }
 
     public float CurrentSpeed => currentSpeed;
@@ -23,9 +24,9 @@ public class MovementModule : MonoBehaviour, ICharacterModule
     private float slideDeceleration = 10f;
     private float slideTimer;
 
-    private bool isDashing;
+    public bool IsDashing => isDashing;
     private float dashDuration = 0.2f;
-    private float dashSpeed = 10f;
+    private float dashSpeed = 25f;
     private float dashTimer;
     private Vector3 dashDirection;
     private Coroutine movementLockCoroutine;

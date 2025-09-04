@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Hurrican
   category: 2
-  stamina: 30
-  specialInput: 000000000100000000000000
-  specialComboMaxGap: 60
+  stamina: 0
+  specialInput: 000000000000000000000000
+  specialComboMaxGap: 120
   AirAttack: 0
   inputName: 0
   startupFrames: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   knockbackMagnitude: 1
   knockbackVerticalFactor: 0.5
   hitStop: 3
-  cancelableDuringStartup: 1
-  cancelableDuringRecovery: 1
+  cancelableDuringStartup: 0
+  cancelableDuringRecovery: 0
   hitboxSize: {x: 2.5, y: 3, z: 2.5}
   animationTrigger: Hurrican
