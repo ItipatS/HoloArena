@@ -4,7 +4,9 @@
 This project is a **3D arena-style fighting game**, built entirely in Unity with a focus on scalable architecture, clean modular code, and responsive UI systems. Inspired by classic fighting games like *Super Smash Bros.* and *Brawlhalla*, this game showcases both **gameplay mechanics** and **user interface design** — ideal for demonstrating technical depth and transferable skills to any game dev role, including Cocos Creator.
 
 > **🛠 Built with:** Unity (C#), Component-Based Architecture, Modular Systems, Inspector-Friendly Design
-
+---
+## Download to play or get unitypackage of the project 
+# Here! -> https://itipats.itch.io/holo-arena
 ---
 
 ##  Project Overview
@@ -50,9 +52,6 @@ Highlights:
 - [View UI Folder](./Assets/_Project/UIElements)
 >  Designed to be intuitive, readable, and extendable, especially for team handoff or designer collaboration.
 ---
-# Demo Video
-[![Watch the demo](https://img.youtube.com/vi/6s0k-Z0F8c8/hqdefault.jpg)🔗](https://www.youtube.com/watch?v=6s0k-Z0F8c8)
----
 ### Visual Effects & Shader Work
 
 - This project also includes custom shader effects to enhance player feedback and UI-less design:
@@ -65,9 +64,6 @@ Highlights:
   
 - [View VFX Folder](./Assets/_Project/VFX)
 > Built with Unity's Built-in Render Pipeline and custom shader scripts (without relying on URP/HDRP), designed to run efficiently on low-spec devices.
----
-# Demo Video
-[![Watch the demo](https://img.youtube.com/vi/NoEU0BiMYJQ/hqdefault.jpg)🔗](https://www.youtube.com/watch?v=NoEU0BiMYJQ)
 ---
 ##  Reusability & Maintainability
 
