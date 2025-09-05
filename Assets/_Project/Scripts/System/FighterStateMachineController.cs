@@ -105,6 +105,12 @@ public class FighterStateMachineController : MonoBehaviour, ICharacterModule
         {
             FighterSM.ChangeState(FighterState.Blocking, StateTransition.Safe);
         }
+
+        if (IsDashing)
+        {
+            FighterSM.ChangeState(FighterState.Dashing, StateTransition.Safe);
+        }
+
     }
 
     public void Walking_Enter()
@@ -140,6 +146,10 @@ public class FighterStateMachineController : MonoBehaviour, ICharacterModule
         {
             FighterSM.ChangeState(FighterState.Blocking, StateTransition.Safe);
         }
+        if (IsDashing)
+        {
+            FighterSM.ChangeState(FighterState.Dashing, StateTransition.Safe);
+        }
         float targetSpeed = CurrentSpeed < minWalkSpeed ? 0f : (CurrentSpeed < stopThreshold ? 0.5f : 1f);
         animator.SetFloat("Speed", targetSpeed, 0.1f, Time.deltaTime);
     }
@@ -152,7 +162,6 @@ public class FighterStateMachineController : MonoBehaviour, ICharacterModule
     public void Dashing_Enter()
     {
         Debug.Log("FSM: Entering Dashing");
-
         animator.SetTrigger("Slide");
     }
 
@@ -209,6 +218,7 @@ public class FighterStateMachineController : MonoBehaviour, ICharacterModule
     public void Attacking_Enter()
     {
         Debug.Log("FSM: Entering Attacking");
+        AudioManager.Instance.PlaySound("Grunt");
     }
 
     public void Attacking_Tick()

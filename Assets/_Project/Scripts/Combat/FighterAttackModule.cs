@@ -241,8 +241,6 @@ public class FighterAttackModule : MonoBehaviour, ICharacterModule
         // Trigger the appropriate animation.
         animator.SetTrigger(attackData.animationTrigger);
 
-        AudioManager.Instance.PlaySound("Grunt");
-
         for (int i = 0; i < startupFrames; i++)
         {
             yield return new WaitForFixedUpdate();

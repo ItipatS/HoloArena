@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Data;
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class AudioManager : MonoBehaviour
 
     // Dictionary to hold sound effects.
     public List<SoundClipMapping> soundMappings = new List<SoundClipMapping>();
-    public Dictionary<string, AudioClip> soundClips = new Dictionary<string, AudioClip>();
+    public Dictionary<string, SoundClipMapping> soundClips = new Dictionary<string, SoundClipMapping>();
     private void Awake()
     {
         if (Instance == null)
@@ -27,7 +28,7 @@ public class AudioManager : MonoBehaviour
         {
             if (!soundClips.ContainsKey(mapping.soundID) && mapping.clip != null)
             {
-                soundClips.Add(mapping.soundID, mapping.clip);
+                soundClips.Add(mapping.soundID, mapping);
             }
         }
     }
@@ -36,11 +37,13 @@ public class AudioManager : MonoBehaviour
     {
         if (soundClips.ContainsKey(soundID))
         {
+            var mapping = soundClips[soundID];
             AudioSource tempSource = gameObject.AddComponent<AudioSource>();
             tempSource.ignoreListenerPause = true;
             tempSource.pitch = Random.Range(0.9f, 1.1f);
-            tempSource.PlayOneShot(soundClips[soundID]);
-            Destroy(tempSource, soundClips[soundID].length);
+
+            tempSource.PlayOneShot(mapping.clip, mapping.volume);
+            Destroy(tempSource, mapping.clip.length);
         }
         else
         {

@@ -160,13 +160,13 @@ public class MovementModule : MonoBehaviour, ICharacterModule
     private void StartDash(Vector3 direction)
     {
         if (!statModule.ConsumeStamina(20f))
-        return;
+            return;
 
         Debug.LogWarning("StartDashing: " + direction);
         isDashing = true;
         dashTimer = dashDuration;
         dashDirection = direction.normalized;
-
+        AudioManager.Instance.PlaySound("Dash");
         // Optional: play dash VFX or sound here
     }
 
