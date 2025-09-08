@@ -1,8 +1,7 @@
 
 #  3D Arena Fighting Game – Unity Project
 
-This project is a **3D arena-style fighting game**, built entirely in Unity with a focus on scalable architecture, clean modular code, and responsive UI systems. Inspired by classic fighting games like *Super Smash Bros.* and *Brawlhalla*, this game showcases both **gameplay mechanics** and **user interface design** — ideal for demonstrating technical depth and transferable skills to any game dev role, including Cocos Creator.
-
+This project is a **3D arena-style fighting game**, built entirely in Unity with a focus on scalable architecture, clean modular code, and responsive UI systems. Inspired by classic fighting games like *Super Smash Bros.* and *Brawlhalla*, this game showcases both **gameplay mechanics** and **user interface design**.
 > **🛠 Built with:** Unity (C#), Component-Based Architecture, Modular Systems, Inspector-Friendly Design
 ---
 ## Download to play or get unitypackage of the project 
@@ -64,6 +63,29 @@ Highlights:
   
 - [View VFX Folder](./Assets/_Project/VFX)
 > Built with Unity's Built-in Render Pipeline and custom shader scripts (without relying on URP/HDRP), designed to run efficiently on low-spec devices.
+---
+### InputSystem
+This module manages player input using Unity’s Input System and a custom Input Buffer.
+It handles both real-time input (Move, Jump, Attack, Block) and buffered input for precise fighting-game mechanics.
+
+Key responsibilities:
+- Detects and routes actions from Unity’s InputActionMap.
+- Buffers inputs (via InputBufferModule) to allow frame-perfect execution.
+- Tracks input windows (via InputWindowCheckerModule) for combos and advanced mechanics.
+- Supports multi-player setup (Player1, Player2) and gamepad vs keyboard and (moblie in future).
+- [View InputSystem Folder](./Assets/_Project/Scripts/Input)
+---
+### CombatSystem
+This module manages all attack logic for a fighter character, including normal attacks, special attacks, and combo chains. It integrates with the input buffer system to allow frame-precise inputs, stat module for stamina/health checks, and hitbox/hurtbox modules for combat resolution.
+
+Key responsibilities:
+- Handles normal attacks, specials, and combo chains based on input.
+- Controls attack states (startup, active, recovery) with animation syncing.
+- Manages hitboxes dynamically (size, knockback, damage, duration).
+- Integrates with stat system (stamina consumption, conditional attacks).
+- Supports canceling attacks on being hit or blocking.
+- Ensures combo timing with a combo timer window and per-move sequences.
+- [View CombatSystem Folder](./Assets/_Project/Scripts/Combat)
 ---
 ##  Reusability & Maintainability
 
