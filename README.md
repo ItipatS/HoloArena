@@ -6,6 +6,9 @@ This project is a **3D arena-style fighting game**, built entirely in Unity with
 ---
 ## Download to play or get unitypackage of the project 
 # Here! -> https://itipats.itch.io/holo-arena
+
+# Demo video
+[![Watch the video](https://img.youtube.com/vi/NoEU0BiMYJQ/0.jpg)](https://youtu.be/NoEU0BiMYJQ)
 ---
 
 ##  Project Overview
@@ -36,6 +39,7 @@ Notable principles:
 
 ###  UI System
 
+[![Watch the video](https://img.youtube.com/vi/6s0k-Z0F8c8/0.jpg)](https://youtu.be/6s0k-Z0F8c8)
 
 Located in the `UIElements/` folder, the project includes responsive UI components for:
 - Main menu navigation
